@@ -26,6 +26,38 @@ def num_unique_emails(emails):
 			if c+d_name not in new_l:
 				new_l.append(c+d_name)
 	return len(new_l)
-print(num_unique_emails(["f.atima@live.com","fatima+sal@live.com",
-	"fati+ma.s@li+ve.com", "fatima2@live.com"]))
+# print(num_unique_emails(["f.atima@live.com","fatima+sal@live.com",
+# 	"fati+ma.s@li+ve.com", "fatima2@live.com"]))
+def asci_to_index(s):
+	
+	index = ord(s) - ord('a')
+	return index
 
+def word_to_morse(word):
+    morse_code = [".-","-...","-.-.","-..",".",
+        "..-.","--.","....","..",".---","-.-",".-..","--",
+        "-.","---",".--.","--.-",".-.","...","-","..-","...-",
+        ".--","-..-","-.--","--.."]
+    translation = ""
+    for i in word:
+        i_index = asci_to_index(i)
+        translation += morse_code[i_index]
+    return translation
+
+def unique_morse_code_words(words):  
+	if len(words) < 2:
+	 	return len(words)
+
+	uniques =[]
+	for word in words:
+		morse = word_to_morse(word)
+		uniques.append(morse)	
+	return len(set(uniques))
+
+
+
+
+
+
+
+print(unique_morse_code_words([]))
