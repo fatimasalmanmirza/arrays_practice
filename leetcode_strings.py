@@ -82,10 +82,37 @@ def repeat_elements(elements):
 print(repeat_elements([2,1,2,5,3,2]))
 ############################################################
 
+#Given an array of integers
+# A sorted in non-decreasing order, 
+#return an array of the squares of each number,
+# also in sorted non-decreasing order.
 
+def sortedsq(nums):
+	result = []
+	for i in nums:
+		result.append(i**2)
+	sorted_list = sorted(result)	
 
+	return sorted_list
+		
+print(sortedsq([-7,-3,2,3,11]))
 
+###########################################################
 
+#Given an array A of non-negative integers, 
+#return an array consisting of all the even elements of A,
+#followed by all the odd elements of A.
+#You may return any answer array that satisfies this condition.
+def sort_array_evenodd(nums):
+ 	even = []
+ 	odd = []
+ 	for i in nums:
+ 		if i%2 == 0:
+ 			even.append(i)
+ 		else:
+ 			odd.append(i)	
 
-
+ 	
+ 	return even + odd
+print(sort_array_evenodd([3,1,2,4])) 	
 
