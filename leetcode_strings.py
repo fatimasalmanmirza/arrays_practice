@@ -28,6 +28,9 @@ def num_unique_emails(emails):
 	return len(new_l)
 # print(num_unique_emails(["f.atima@live.com","fatima+sal@live.com",
 # 	"fati+ma.s@li+ve.com", "fatima2@live.com"]))
+
+
+###########################################################
 def asci_to_index(s):
 	
 	index = ord(s) - ord('a')
@@ -53,6 +56,31 @@ def unique_morse_code_words(words):
 		morse = word_to_morse(word)
 		uniques.append(morse)	
 	return len(set(uniques))
+# print(unique_morse_code_words([]))
+
+###########################################################
+#In a array A of size 2N, 
+#there are N+1 unique elements, 
+#and exactly one of these elements is repeated N times.
+#Return the element repeated N times.
+def repeat_elements(elements):
+	# repeats = []
+	# for i in range(len(elements)-2):
+	# 	if elements[i] == elements[i+2]:
+	# 		repeats.append(elements[i])
+		
+	dict_el = {}
+	for i in elements:
+		if i in dict_el:
+			dict_el[i] += 1
+		else:
+			dict_el[i] = 1
+
+	for k,value in dict_el.items():
+		if value > 1:
+			return k
+print(repeat_elements([2,1,2,5,3,2]))
+############################################################
 
 
 
@@ -60,4 +88,4 @@ def unique_morse_code_words(words):
 
 
 
-print(unique_morse_code_words([]))
+
