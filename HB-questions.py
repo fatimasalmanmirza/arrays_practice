@@ -55,14 +55,25 @@ def is_anagram_of_palindrome(word):
 		return False
 	else:
 		return True							
-print(is_anagram_of_palindrome("ab")) #false	
-print(is_anagram_of_palindrome("arceaceb")) #False
-print(is_anagram_of_palindrome("a")) #True
-print(is_anagram_of_palindrome("arceace"))	#True
-print(is_anagram_of_palindrome("")) #True
+# print(is_anagram_of_palindrome("ab")) #false	
+# print(is_anagram_of_palindrome("arceaceb")) #False
+# print(is_anagram_of_palindrome("a")) #True
+# print(is_anagram_of_palindrome("arceace"))	#True
+# print(is_anagram_of_palindrome("")) #True
 
+########################################################
+def add_to_zero(nums):
+	"""Given list of ints, return True if any to sums to 0."""
+	set_nums = set(nums)
+	for num in nums:
+		if -num in set_nums:
+			return True
+	return False	
+# print(add_to_zero([1, 2, 3])) # False		
+# print(add_to_zero([1])) #False
+# print(add_to_zero([1, 2, 3, -2])) #True
 
-
+##########################################################
 
 
 
