@@ -21,19 +21,54 @@ print(rev_string("abcd"))
 ########################################################
 
 def dec2bin(num):
-
+	"""decimal to binary"""
 	string = ""
-
 	if num == 0:
 		return num
 	while num != 0:
 
 		remainder = num%2
 		string = str(remainder)+ string
-		num = num//2
-		
-	
-		
+		num = num//2	
 	return string
 print(dec2bin(6))
+#########################################################
+def is_anagram_of_palindrome(word):
+
+	counter = 0
+	result = {}
+	for i in word:
+		if i in result:
+			result[i] += 1
+		else:
+			result[i] = 1	
+	orphan = []
+	if len(word)%2 == 0:
+		for value in result.values():
+			if value%2 != 0:
+				return False
+	else:
+		for value in result.values():
+			if value%2 != 0:
+				orphan.append(value)
+	if len(orphan) > 1:
+		return False
+	else:
+		return True							
+print(is_anagram_of_palindrome("ab")) #false	
+print(is_anagram_of_palindrome("arceaceb")) #False
+print(is_anagram_of_palindrome("a")) #True
+print(is_anagram_of_palindrome("arceace"))	#True
+print(is_anagram_of_palindrome("")) #True
+
+
+
+
+
+
+
+
+
+
+
 
