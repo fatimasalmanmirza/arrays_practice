@@ -9,3 +9,12 @@ def rev_string(astring):
 		return astring
 	return astring[-1] + rev_string(astring[0:-1])	
 print(rev_string("abcdefg"))
+print(rev_string(""))
+##########################################################
+def rev_string(astring):
+
+	revered = ""
+	for i in astring:
+		revered = i + revered
+	return revered
+print(rev_string("abcd"))		
