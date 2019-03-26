@@ -68,14 +68,43 @@ def add_to_zero(nums):
 	for num in nums:
 		if -num in set_nums:
 			return True
-	return False	
+	return False
+	
 # print(add_to_zero([1, 2, 3])) # False		
 # print(add_to_zero([1])) #False
 # print(add_to_zero([1, 2, 3, -2])) #True
-
 ##########################################################
+# def has_balanced_brackets(phrase):
+#     """Does a given string have balanced pairs of brackets?
+
+#     Given a string as input, return True or False depending on whether the
+#     string contains balanced (), {}, [], and/or <>.
+#     """
+#     closer_openers = {")":"(", "]":"[", "}":"{", ">": "<"}
+#     seen = []
+#     for i in phrase:
+#     	if i in closer_openers.keys():
+######################################################
+def mode(nums):
+	"""Find the most frequent num(s) in nums."""
+	num_dict = {}
+	for i in nums:
+		if i not in num_dict:
+			num_dict[i] = 1
+		else:
+			num_dict[i] += 1
+	frequencies = max(num_dict.values())
+	a = set()
+	for k,v in num_dict.items():
+		if v == frequencies:
+			a.add(k)
+	return a		
+print(mode([1, 2, 2, 2]))				
+#####################################################	
+	
 
 
+    		
 
 
 
