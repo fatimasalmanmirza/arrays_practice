@@ -156,14 +156,26 @@ def backspaceCompare(S, T):
 	return False			
 	
 
-print(backspaceCompare("ab#c", "ad#c"))
-print(backspaceCompare("a##c", "#a#c"))
+#print(backspaceCompare("ab#c", "ad#c"))
+#print(backspaceCompare("a##c", "#a#c"))
 ##################################################
-
-
-
-
-
+def rotateString(A, B):
+	"""We are given two strings, A and B.A shift
+	on A consists of taking string A and moving 
+	the leftmost character to the rightmost position.
+	For example, if A = 'abcde', then it will be 
+	'bcdea' after one shift on A. Return True if and
+	only if A can become B after some number of shifts on A."""
+	A_strings = A+A
+	i, j = 0, 0
+	while i < len(B):
+		if A_strings[i] == B[j]:
+			if A_strings[i:i+len(B)] == B:
+				return True	
+		i += 1
+	return False			
+print(rotateString("abcde", "cdeab"))
+print(rotateString("abcde", "abced"))
 
 
 
