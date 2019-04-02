@@ -193,25 +193,23 @@ def buddy_strings(A, B):
 	"""Given two strings A and B of lowercase letters,
 	return true if and only if we can swap two letters
 	in A so that the result equals B."""
+	l = list(A)
+	l_b = list(B)
 	if len(A) == 0 or len(B) == 0:
 		return False
-
-
-	i = 0
-	list_A = list(A)
-	
-	while i < len(A)-1:
-		list_A[i], list_A[i+1] = list_A[i+1], list_A[i]
-		if list_A == list(B):
-
-			return True
-		i += 1
+			
+	for i in range(len(A)):
+		for j in range(1,len(A)):
+			l[i],l[j] = l[j], l[i]
+			if l == l_b:
+				return True	
+			l[j], l[i]	 = l[i],l[j]		
 	return False		
-# print(buddy_strings("ab", "ba")) #true
-# print(buddy_strings("ab", "ab")) #False
-# print(buddy_strings("aa", "aa")) # true
-# print(buddy_strings("","aa")) #False
-print(buddy_strings("aaaaaaabc", "aaaaaaacb")) #true
+print(buddy_strings("ab", "ba")) #true
+print(buddy_strings("ab", "ab")) #False
+print(buddy_strings("aa", "aa")) # true
+print(buddy_strings("","aa")) #False
+print(buddy_strings("abc", "acb")) #true
 
 
 
