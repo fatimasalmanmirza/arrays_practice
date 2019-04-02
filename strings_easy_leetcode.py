@@ -141,7 +141,8 @@ def list_withbackspace(S):
 		if i != "#":
 			result.append(i)
 		else:
-			result.pop()
+			if len(result) != 0:
+				result.pop()
 	return result			
 
 def backspaceCompare(S, T):
@@ -156,6 +157,7 @@ def backspaceCompare(S, T):
 	
 
 print(backspaceCompare("ab#c", "ad#c"))
+print(backspaceCompare("a##c", "#a#c"))
 ##################################################
 
 
