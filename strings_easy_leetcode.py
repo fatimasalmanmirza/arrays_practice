@@ -166,16 +166,30 @@ def rotateString(A, B):
 	For example, if A = 'abcde', then it will be 
 	'bcdea' after one shift on A. Return True if and
 	only if A can become B after some number of shifts on A."""
+	if len(A) == 0 and len(B) == 0:
+		return True
+
+	if len(A) == 0 or len(B) == 0:
+		return False
+	if len(A) != len(B):
+		return False	
+
 	A_strings = A+A
 	i, j = 0, 0
 	while i < len(B):
 		if A_strings[i] == B[j]:
-			if A_strings[i:i+len(B)] == B:
+			if A_strings[i:i+len(B) ] == B:
 				return True	
 		i += 1
+
 	return False			
 print(rotateString("abcde", "cdeab"))
 print(rotateString("abcde", "abced"))
+print(rotateString("","a"))
+print(rotateString("",""))
+print(rotateString("aa", "a"))
+
+
 
 
 
