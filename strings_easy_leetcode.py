@@ -183,11 +183,37 @@ def rotateString(A, B):
 		i += 1
 
 	return False			
-print(rotateString("abcde", "cdeab"))
-print(rotateString("abcde", "abced"))
-print(rotateString("","a"))
-print(rotateString("",""))
-print(rotateString("aa", "a"))
+# print(rotateString("abcde", "cdeab"))
+# print(rotateString("abcde", "abced"))
+# print(rotateString("","a"))
+# print(rotateString("",""))
+# print(rotateString("aa", "a"))
+####################################################
+def buddy_strings(A, B):
+	"""Given two strings A and B of lowercase letters,
+	return true if and only if we can swap two letters
+	in A so that the result equals B."""
+	if len(A) == 0 or len(B) == 0:
+		return False
+
+
+	i = 0
+	list_A = list(A)
+	
+	while i < len(A)-1:
+		list_A[i], list_A[i+1] = list_A[i+1], list_A[i]
+		if list_A == list(B):
+
+			return True
+		i += 1
+	return False		
+# print(buddy_strings("ab", "ba")) #true
+# print(buddy_strings("ab", "ab")) #False
+# print(buddy_strings("aa", "aa")) # true
+# print(buddy_strings("","aa")) #False
+print(buddy_strings("aaaaaaabc", "aaaaaaacb")) #true
+
+
 
 
 
