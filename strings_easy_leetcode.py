@@ -122,16 +122,17 @@ def diStringMatch(S):
 	return result + [lo]
 ######################################################	 			
 def reverse_words(s):
-	reverse_w = []
-	result = ""
-	reverse_w = s.split()
-	for i in s:
-		result = i + result
-		reverse_w = list(result)
-	return "".join(reverse_w[::-1])	
-		
+	"""Given a string, you need to reverse the
+	order of characters in each word within a 
+	sentence while still preserving whitespace
+	and initial word order"""
+	s_list = s.split()
+	new_list = []
+	for i in s_list:
+		i = i[::-1]
 
-	
+		new_list.append(i)
+	return " ".join(new_list)			
 print(reverse_words("Let's take LeetCode contest"))		
 
 
