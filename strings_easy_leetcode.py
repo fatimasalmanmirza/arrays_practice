@@ -133,9 +133,30 @@ def reverse_words(s):
 
 		new_list.append(i)
 	return " ".join(new_list)			
-print(reverse_words("Let's take LeetCode contest"))		
+# print(reverse_words("Let's take LeetCode contest"))		
+####################################################
+def list_withbackspace(S):
+	result = []
+	for i in S:
+		if i != "#":
+			result.append(i)
+		else:
+			result.pop()
+	return result			
 
+def backspaceCompare(S, T):
+	"""Given two strings S and T, return if they
+	are equal when both are typed into empty text
+	editors. # means a backspace character."""
+	S_list = list_withbackspace(S)
+	T_list = list_withbackspace(T)
+	if S_list == T_list:
+		return True
+	return False			
+	
 
+print(backspaceCompare("ab#c", "ad#c"))
+##################################################
 
 
 
