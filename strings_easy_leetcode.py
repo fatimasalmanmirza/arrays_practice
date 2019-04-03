@@ -224,6 +224,23 @@ def buddy_strings(A, B):
 # print(buddy_strings("abc", "acb")) #true
 # print(buddy_strings("abcaa", "abcbb")) #false
 #######################################################
+def compress(chars):
+	"""Given an array of characters, compress it in-place."""
+	chars_dict = {}
+	result = []
+	for i in chars:
+		if i in chars_dict:
+			chars_dict[i] += 1
+		else:
+			chars_dict[i] = 1
+	for keys, values in chars_dict.items():
+		if values >1:
+			result.append(keys)
+			result.append(values)
+		result.append(keys)	
+	return result	
+print(compress(["a","a","b","b","c","c","c"]))					
+print(compress(["a"]))
 
 
 
