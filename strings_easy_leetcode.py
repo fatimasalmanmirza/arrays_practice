@@ -224,23 +224,40 @@ def buddy_strings(A, B):
 # print(buddy_strings("abc", "acb")) #true
 # print(buddy_strings("abcaa", "abcbb")) #false
 #######################################################
+def split_integers(S):
+	result = []
+	S = str(S)
+	for c in S:
+		result.append(c)
+	return result
+# print(split_integers("123"))		
 def compress(chars):
 	"""Given an array of characters, compress it in-place."""
-	chars_dict = {}
 	result = []
-	for i in chars:
-		if i in chars_dict:
-			chars_dict[i] += 1
+	count = 0
+	current = chars[0]
+	for char in chars:
+		
+		if char == current:
+			count += 1
 		else:
-			chars_dict[i] = 1
-	for keys, values in chars_dict.items():
-		if values >1:
-			result.append(keys)
-			result.append(values)
-		result.append(keys)	
-	return result	
+			if count == 1:
+				result.append(current)
+			else:
+				result.append(current)
+				result +=  split_integers(count)
+			
+			current = char
+			count = 1			
+	result.append(current)
+	if count > 1:
+		result += split_integers(count)
+	return len(result)	
 print(compress(["a","a","b","b","c","c","c"]))					
 print(compress(["a"]))
+print(compress(["a","b","b","b","b","b","b","b","b","b","b","b","b"]))
+print(compress(["a","a","b","b","c","c","c"]))
+#######################################################
 
 
 
