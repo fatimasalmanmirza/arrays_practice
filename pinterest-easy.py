@@ -21,27 +21,27 @@ def subdomainVisits(cpdomains):
 	(in the same format as the input, and in any order),
 	that explicitly counts the number of visits to each 
 	subdomain."""
-	domain_dict = {}
+	from collections import Counter
+	domain_dict = Counter()
+	result = []
+	
 	for domain in cpdomains:
-		count, domain = domain.split()
+		count, domain = domain.split(" ")
 		
 		count = int(count)
-		domain = str(domain)
+		d = domain.split(".")
 
 
-		if domain not in domain_dict:
-			domain_dict[domain] = count
-		else:
-			domain_dict[domain] += count	
+		for k in range(1, len(d)+1):
+
+			domain_dict[".".join(d[-k:])]+=count
+
+
+	for keys, values in domain_dict.items():
+		result.append(str(values) + " " +str(keys))
 		
-		subdomain = domain.split('.')
-		
-		for i in subdomain:
-			if i not in domain_dict:
-				domain_dict[i] = count
-			else:
-				domain_dict[i] += count
-	return domain_dict				 
+
+	return result			 
 
 	
 		# if domain_s not in domain_dict:
