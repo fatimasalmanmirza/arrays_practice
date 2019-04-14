@@ -160,28 +160,28 @@ def isValidSudoku(board):
 	return True
 
 
-print(isValidSudoku([
-  ["5","3",".",".","7",".",".",".","."],
-  ["6",".",".","1","9","5",".",".","."],
-  [".","9","8",".",".",".",".","6","."],
-  ["8",".",".",".","6",".",".",".","3"],
-  ["4",".",".","8",".","3",".",".","1"],
-  ["7",".",".",".","2",".",".",".","6"],
-  [".","6",".",".",".",".","2","8","."],
-  [".",".",".","4","1","9",".",".","5"],
-  [".",".",".",".","8",".",".","7","9"]
-]))	
-print(isValidSudoku([
-  ["8","3",".",".","7",".",".",".","."],
-  ["6",".",".","1","9","5",".",".","."],
-  [".","9","8",".",".",".",".","6","."],
-  ["8",".",".",".","6",".",".",".","3"],
-  ["4",".",".","8",".","3",".",".","1"],
-  ["7",".",".",".","2",".",".",".","6"],
-  [".","6",".",".",".",".","2","8","."],
-  [".",".",".","4","1","9",".",".","5"],
-  [".",".",".",".","8",".",".","7","9"]
-]))
+# print(isValidSudoku([
+#   ["5","3",".",".","7",".",".",".","."],
+#   ["6",".",".","1","9","5",".",".","."],
+#   [".","9","8",".",".",".",".","6","."],
+#   ["8",".",".",".","6",".",".",".","3"],
+#   ["4",".",".","8",".","3",".",".","1"],
+#   ["7",".",".",".","2",".",".",".","6"],
+#   [".","6",".",".",".",".","2","8","."],
+#   [".",".",".","4","1","9",".",".","5"],
+#   [".",".",".",".","8",".",".","7","9"]
+# ]))	
+# print(isValidSudoku([
+#   ["8","3",".",".","7",".",".",".","."],
+#   ["6",".",".","1","9","5",".",".","."],
+#   [".","9","8",".",".",".",".","6","."],
+#   ["8",".",".",".","6",".",".",".","3"],
+#   ["4",".",".","8",".","3",".",".","1"],
+#   ["7",".",".",".","2",".",".",".","6"],
+#   [".","6",".",".",".",".","2","8","."],
+#   [".",".",".","4","1","9",".",".","5"],
+#   [".",".",".",".","8",".",".","7","9"]
+# ]))
 
 
 # def isSubsequence(s,t):
@@ -199,9 +199,49 @@ print(isValidSudoku([
 
 # print(isSubsequence("abc", "ahbgdc"))	
 
+def lengthoflongestsubstring(s):
+	current_set = set()
+	i = 0
+	current_start = 0
+	strings = []
+	while current_start <= len(s)-1:
+		current_set.clear()
+		i = current_start
+		while i < len(s) and s[i] not in current_set:
+			current_set.add(s[i])
+			i+=1		
+		strings.append(s[current_start:i])
+		current_start += 1
+	counter = 0
+	for i in strings:
+		if len(i) > counter:
+			counter = len(i)
+	return counter	
+# print(lengthoflongestsubstring(""))	
+# print(lengthoflongestsubstring("1"))	
+# print(lengthoflongestsubstring("zaki"))	
+# print(lengthoflongestsubstring("zakifatimapalwasha"))	
+# print(lengthoflongestsubstring("abcabcbb"))	
+# print(lengthoflongestsubstring("pwwkew"))
+
+def groupAnagrams(strs):
+	result = []
+	map_words = {}
+	for words in strs:
+		x = "".join(sorted(words))
+		
+		if x not in map_words:
+			map_words[x] = [words]
+		else:
+			map_words[x].append(words)
+	for k,v in map_words.items():
+		result.append(v)
+	return result
 
 
 
+
+print(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
 
 
 
