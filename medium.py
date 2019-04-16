@@ -238,27 +238,197 @@ def groupAnagrams(strs):
 		result.append(v)
 	return result
 
+# print(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+def validate_overlap(interval, num):
+	if num >= interval[0] and num <= interval[1]:
+		return True
+	return False
+# print(validate_overlap([1,3], 6))
 
+def max_intervalvalue(intervals):
+	result = 0
+	for i in intervals:
+		if i[1] >= result:
+			result = i[1]
+	return result
+# print(max_intervalvalue([[1,3],[2,6],[8,10],[15,18]]))	
 
+def merge(intervals):
+	
+	x = max_intervalvalue(intervals)
+	for i in range(x):
+		overlapping = []
+		for j in intervals:
+			if validate_overlap(j,i):
+				overlapping.append(j)
+		# print(f"{i}: {overlapping}")
+	return overlapping
 
-print(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+# print(merge([[1,3],[2,6],[8,10],[15,18]]))
+# print(merge([[1,4],[4,5]]))
+def numUniqueEmails(emails):
 
+	seen = set()
+	for email in emails:
+		local, domain = email.split("@")
+	
+		local = local.replace(".","")
+		print(local)
+		if "+" in local:
+			local = local.split("+")
+			local = local[0]
+			seen.add(local+"@" + domain)
+		seen.add(local+"@" + domain)
+	return len(seen)		
+# print(numUniqueEmails(["test.email+alex@leetcode.com","test.e.mail+bob.cathy@leetcode.com",
+# 	"testemail+david@lee.tcode.com"]))
+def isValid_parens(s):
+	openings = ["(", "[", "{"]
+	parens_dict = {"]":"[", ")":"(", "}":"{"}
+	stack = []
+	if len(s) == 1:
+		return False
+	for i in s:
+		if i in openings:
+			stack.append(i)
+		else:
+			if len(stack) == 0:
+				return False
+			if parens_dict[i] != stack.pop():
+					return False
+				
+	if len(stack) >= 1:
+		return False
+				
+	return True	
+# print(isValid_parens("([)]"))
+# print(isValid_parens("{[]}"))
+# print(isValid_parens("("))
 
+def subdomain_visits(cpdomains):
+	domain_dict = {}
+	result = []
+	for domain in cpdomains:
+		count, domain = domain.split(" ")
+		count = int(count)
+		d = domain.split(".")
+		for k in range(1,len(d)+1):
+			dd = ".".join(d[-k:])
+			if dd not in domain_dict:
+				domain_dict[dd] = count
+	
+	for k,v in domain_dict.items():
+		result.append(str(v) + " " + str(k))
+	return result				
+# print(subdomain_visits(["900 google.mail.com",
+#  "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]))						
 
+def reverse_string(s):
+	left = 0
+	right = len(s) - 1
+	while left < right:
+		temp = s[left]
+		s[left] = s[right]
+		s[right] = temp
+		left +=1
+		right -=1
+	return s	
 
+# print(reverse_string(["H","a","n","n","a","h"]))	
+ 
+def move_zeroes(nums):
+	for i in nums:
+		if i == 0:
+			nums.remove(i)
+			nums.append(i)
+	return nums		
+# print(move_zeroes([0,1,0,3,12]))	
+def backspace(s):
+	result = []
+	for i in s:
+		if i != "#":
+			result.append(i)
+		else:
+			if len(result) != 0:
+				result.pop()
+	return result			
+# print(backspace("a##c"))
+def longest_common_prefix(strs):
+	if len(strs) < 1:
 
+		return ""
+	shortest_string = min(strs, key = len)
+	for index,v in enumerate(shortest_string):
+		for i in strs:
+			if i[index] != v:
+				return shortest_string[:index]
+# print(longest_common_prefix(["flower","flow","flight"]))	
+def findmedian(nums1, nums2):
+	join_list = nums1 + nums2
 
+	join_list.sort()
 
+	
+	if len(join_list) % 2 != 0:
+		index = len(join_list)//2
+		return [join_list[index]]
+		
+	else:
+		index = len(join_list)//2
+		y = join_list[index]
+		z = join_list[index+1]
+		x = y+z
+		print(x/2)
 
+# print(findmedian([1, 3],[2]))
+# print(findmedian([1, 2],[3, 4]))
+def merge(intervals):
+	if not intervals:
+		return []
+	data = []
+	for interval in intervals:
+		data.append((interval[0], 0))
+		data.append((interval[1], 1))
+	# print(data)	
+	data.sort()
 
+	merged = []
+	stack = [data[0]]
 
+	for i in range(1, len(data)):
+		d = data[i]
+		if d[1] == 0:
+			stack.append(d)
+		elif d[1] == 1:
+			if stack:
+				start = stack.pop()
+			if len(stack) == 0:				
+				merged.append( (start[0], d[0]))
+	return merged
 
+# print(merge([[1,3],[2,6],[8,10],[15,18]]))
 
+def split_square_digits(n):
+	s = 0
+	while n >= 1:
+		a = n // 10
+		b = n % 10
+		n = a
+		s += b*b
 
+	print(s)
+	return s	
 
+def isHappy(n: int) -> bool:
+    seen = set()
+    while n > 1:
+        seen.add(n)
+        n = split_square_digits(n)
 
+        if n in seen:
+            return False
+    print(seen)        
+    return True
 
-
-
-
+print(isHappy(19))
 
